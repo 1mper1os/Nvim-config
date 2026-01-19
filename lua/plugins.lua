@@ -49,17 +49,6 @@ require("lazy").setup({
 		},
 	},
 	{
-		"kevinhwang91/nvim-ufo",
-		dependencies = {
-			"kevinhwang91/promise-async",
-		},
-		event = "BufReadPost",
-		opts = {},
-		config = function()
-			require("ufo").setup()
-		end,
-	},
-	{
 		"saghen/blink.cmp",
 		event = "InsertEnter",
 		dependencies = "rafamadriz/friendly-snippets",
@@ -220,11 +209,22 @@ require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			-- Proteger contra errores
+			local status_ok, configs = pcall(require, "nvim-treesitter.configs")
+			if not status_ok then
+				return
+			end
+
+			configs.setup({
 				ensure_installed = { "lua", "vim", "vimdoc", "javascript", "typescript", "html", "css" },
-				auto_install = true,
+				auto_install = false,
 				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+				indent = {
 					enable = true,
 				},
 			})
@@ -257,7 +257,6 @@ require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter",
 		},
 		opts = {
-			-- Deshabilitar la integración automática con lspconfig
 			server = {
 				override = false,
 			},
@@ -296,10 +295,16 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
+	},
 }, {
 	checker = {
 		enabled = true,
 		notify = false,
 	},
 })
-
