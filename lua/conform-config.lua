@@ -5,10 +5,10 @@ require("conform").setup({
     javascriptreact = { "prettier" },
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
-    
     -- Web
     html = { "prettier" },
     css = { "prettier" },
+
     scss = { "prettier" },
     json = { "prettier" },
     jsonc = { "prettier" },

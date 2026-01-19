@@ -47,8 +47,6 @@ vks("n", "<leader>th", ":ToggleTerm direction=horizontal<CR>", { desc = "Toggle 
 vks("n", "<leader>tv", ":ToggleTerm direction=vertical size=80<CR>", { desc = "Toggle vertical terminal" })
 vks("t", "<C-x>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 
-vks("n", "<leader>z", ":ZenMode<CR>", { desc = "Toggle Zen Mode" })
-
 vks("n", "<leader>re", ":Refactor extract ", { desc = "Extract function" })
 vks("n", "<leader>rf", ":Refactor extract_to_file ", { desc = "Extract to file" })
 vks("n", "<leader>rv", ":Refactor extract_var ", { desc = "Extract variable" })
