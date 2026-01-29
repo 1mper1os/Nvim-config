@@ -66,3 +66,4 @@ vks("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
 vks("n", "<leader>sv", ":vsplit<CR>", { desc = "Split vertical" })
 vks("n", "<leader>sh", ":split<CR>", { desc = "Split horizontal" })
 vks("n", "<leader>sx", ":close<CR>", { desc = "Close split" })
+
